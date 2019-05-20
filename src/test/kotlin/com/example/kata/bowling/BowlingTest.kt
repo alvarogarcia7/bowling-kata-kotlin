@@ -22,7 +22,8 @@ class BowlingTest {
         "'-1', 1",
         "'1-', 1",
         "'71', 8",
-        "'X', 10"
+        "'X', 10",
+        "'2/', 10"
     )
     fun `scoring a single frame`(gameRepresentation: String, expected: Int) {
         assertThat(calculateScore(gameRepresentation), Is.`is`(expected))

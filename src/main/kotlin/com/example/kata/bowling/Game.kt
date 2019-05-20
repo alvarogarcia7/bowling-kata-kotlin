@@ -10,8 +10,15 @@ class Game(private val gameRepresentation: String) {
         if (isStrike(representation)) {
             return 10
         }
+        if (isSpare(representation)) {
+            return 10
+        }
         return scoreOfASingleThrow(representation[0]) +
                 scoreOfASingleThrow(representation[1])
+    }
+
+    private fun isSpare(representation: String): Boolean {
+        return representation.contains("/")
     }
 
     private fun isStrike(representation: String): Boolean {
