@@ -19,19 +19,14 @@ class BowlingTest {
         assertThat(calculateScore(gameRepresentation), Is.`is`(0))
     }
 
-    @Test
-    fun `total score for one frame when one pin is knocked down`() {
-        assertThat(1, `is`(calculateScore("1-")))
-    }
-
-    @Test
-    fun `total score for one frame when one pin is knocked down after a miss`() {
-        assertThat(1, `is`(calculateScore("-1")))
-    }
-
-    @Test
-    fun `total score for one frame when eight pins are knocked down`() {
-        assertThat(8, `is`(calculateScore("71")))
+    @ParameterizedTest(name = "Scoring a single frame: '{0}' is scored at {1}")
+    @CsvSource(
+        "'-1', 1",
+        "'1-', 1",
+        "'71', 8"
+    )
+    fun `scoring a single frame`(gameRepresentation: String, expected: Int) {
+        assertThat(calculateScore(gameRepresentation), Is.`is`(expected))
     }
 
 
