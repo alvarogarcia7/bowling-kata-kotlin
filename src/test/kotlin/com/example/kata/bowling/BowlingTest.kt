@@ -17,7 +17,7 @@ class BowlingTest {
         assertThat(calculateScore(gameRepresentation), Is.`is`(0))
     }
 
-    @ParameterizedTest(name = "Scoring a single frame: '{0}' is scored at {1}")
+    @ParameterizedTest(name = "Scoring a single frame: \"{0}\" is scored at {1}")
     @CsvSource(
         "'-1', 1",
         "'1-', 1",
