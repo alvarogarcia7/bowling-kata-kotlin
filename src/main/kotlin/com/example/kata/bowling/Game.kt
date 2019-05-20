@@ -8,6 +8,8 @@ class Game(private val gameRepresentation: String) {
 
     private fun parseFrame(representation: String): Int {
         if (isStrike(representation)) {
+            remainingBonusBalls++
+            remainingBonusBalls++
             return 10
         }
         if (isSpare(representation)) {
@@ -23,6 +25,10 @@ class Game(private val gameRepresentation: String) {
                 remainingBonusBalls--
             }
             result += scoreOfASingleThrow(representation[1])
+            if (remainingBonusBalls > 0) {
+                result += scoreOfASingleThrow(representation[1])
+                remainingBonusBalls--
+            }
 
             result
         } catch (e: Exception) {
