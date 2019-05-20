@@ -21,12 +21,12 @@ class BowlingTest {
     @CsvSource(
         "'-1', 1",
         "'1-', 1",
-        "'71', 8"
+        "'71', 8",
+        "'X', 10"
     )
     fun `scoring a single frame`(gameRepresentation: String, expected: Int) {
         assertThat(calculateScore(gameRepresentation), Is.`is`(expected))
     }
-
 
     private fun calculateScore(gameRepresentation: String) = Game(gameRepresentation).score()
 }
