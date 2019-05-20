@@ -21,6 +21,16 @@ class BowlingTest{
         assertEquals(1, calculateScore("1-"))
     }
 
+    @Test
+    fun `total score for one frame when one pin is knocked down after a miss`(){
+        assertEquals(1, calculateScore("-1"))
+    }
+
+    @Test
+    fun `total score for one frame when eight pins are knocked down`(){
+        assertEquals(8, calculateScore("71"))
+    }
+
 
 
     private fun calculateScore(gameRepresentation: String): Int {
