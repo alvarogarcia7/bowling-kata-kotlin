@@ -29,5 +29,14 @@ class BowlingTest {
         assertThat(calculateScore(gameRepresentation), Is.`is`(expected))
     }
 
+
+    @ParameterizedTest(name = "Scoring multiple frames: \"{0}\" is scored at {1}")
+    @CsvSource(
+        "'-1|-1', 2"
+    )
+    fun `scoring multiple frames`(gameRepresentation: String, expected: Int) {
+        assertThat(calculateScore(gameRepresentation), Is.`is`(expected))
+    }
+
     private fun calculateScore(gameRepresentation: String) = Game(gameRepresentation).score()
 }

@@ -2,8 +2,12 @@ package com.example.kata.bowling
 
 class Game(private val gameRepresentation: String) {
     fun score(): Int {
-
-        return parseFrame(gameRepresentation)
+        var frames = gameRepresentation.split("|")
+        return parseFrame(frames[0]) + try {
+            parseFrame(frames[1])
+        } catch (e: Exception) {
+            0
+        }
     }
 
     private fun parseFrame(representation: String): Int {
