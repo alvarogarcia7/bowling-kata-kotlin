@@ -2,20 +2,19 @@ package com.example.kata.bowling
 
 class Game(private val gameRepresentation: String) {
     fun score(): Int {
-        return (try {
-            Integer.parseInt(gameRepresentation[0].toString()) +
-                    Integer.parseInt(gameRepresentation[1].toString())
+        var result = 0
+        result += scoreOfASingleThrow(gameRepresentation[0])
+        result += scoreOfASingleThrow(gameRepresentation[1])
+        return result
+    }
 
+    private fun scoreOfASingleThrow(throwRepresentation: Char): Int {
+        var result = 0
+        try {
+            result = Integer.parseInt(throwRepresentation.toString())
         } catch (e: Exception) {
-            return (try {
-                Integer.parseInt(gameRepresentation[0].toString())
-            } catch (e: Exception) {
-                return (try {
-                    Integer.parseInt(gameRepresentation[1].toString())
-                } catch (e: Exception) {
-                    0
-                })
-            })
-        })
+            //no op
+        }
+        return result
     }
 }
