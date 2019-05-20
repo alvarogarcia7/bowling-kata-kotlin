@@ -7,6 +7,10 @@ class Game(private val gameRepresentation: String) {
             parseFrame(frames[1])
         } catch (e: Exception) {
             0
+        } + try {
+            parseFrame(frames[2])
+        } catch (e: Exception) {
+            0
         }
     }
 

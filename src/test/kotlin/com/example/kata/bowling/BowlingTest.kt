@@ -32,7 +32,8 @@ class BowlingTest {
 
     @ParameterizedTest(name = "Scoring multiple frames: \"{0}\" is scored at {1}")
     @CsvSource(
-        "'-1|-1', 2"
+        "'-1|-1', 2",
+        "'-1|-1|-1', 3"
     )
     fun `scoring multiple frames`(gameRepresentation: String, expected: Int) {
         assertThat(calculateScore(gameRepresentation), Is.`is`(expected))
