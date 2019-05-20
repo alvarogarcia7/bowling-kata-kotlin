@@ -8,13 +8,23 @@ class Game(private val gameRepresentation: String) {
 
     private fun parseFrame(representation: String): Int {
         if (isStrike(representation)) {
+            var result = 10
+            if (remainingBonusBalls > 0) {
+                result += 10
+                remainingBonusBalls--
+            }
             remainingBonusBalls++
             remainingBonusBalls++
-            return 10
+            return result
         }
         if (isSpare(representation)) {
+            var result = 10
+            if (remainingBonusBalls > 0) {
+                result += 10
+                remainingBonusBalls--
+            }
             remainingBonusBalls++
-            return 10
+            return result
         }
         return try {
             var result = 0

@@ -44,7 +44,7 @@ class BowlingTest {
         "'-/|-1', 11, 'There is no bonus to add, from the spare'",
         "'-/|15', 17, 'from the spare, add the first throw. The second throw does not matter'",
         "'X|15', 22, 'from the strike, add two throws'",
-        "'X|X', 20, 'bonus from the strike'"
+        "'X|X', 30, 'bonus from the strike'"
     )
     fun `scoring multiple frames with interaction`(gameRepresentation: String, expected: Int) {
         assertThat(calculateScore(gameRepresentation), Is.`is`(expected))
