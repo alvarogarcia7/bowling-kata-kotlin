@@ -1,6 +1,7 @@
 package com.example.kata.bowling
 
 class Game(private val gameRepresentation: String) {
+    var remainingBonusBalls = 0
     fun score(): Int {
         return gameRepresentation.split("|").map { parseFrame(it) }.sum()
     }
@@ -10,11 +11,20 @@ class Game(private val gameRepresentation: String) {
             return 10
         }
         if (isSpare(representation)) {
+            remainingBonusBalls++
             return 10
         }
         return try {
-            scoreOfASingleThrow(representation[0]) +
-                    scoreOfASingleThrow(representation[1])
+            var result = 0
+
+            result += scoreOfASingleThrow(representation[0])
+            if (remainingBonusBalls > 0) {
+                result += scoreOfASingleThrow(representation[0])
+                remainingBonusBalls--
+            }
+            result += scoreOfASingleThrow(representation[1])
+
+            result
         } catch (e: Exception) {
             0
         }
