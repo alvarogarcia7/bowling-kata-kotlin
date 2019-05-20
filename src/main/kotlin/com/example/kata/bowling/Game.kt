@@ -2,16 +2,7 @@ package com.example.kata.bowling
 
 class Game(private val gameRepresentation: String) {
     fun score(): Int {
-        var frames = gameRepresentation.split("|")
-        return parseFrame(frames[0]) + try {
-            parseFrame(frames[1])
-        } catch (e: Exception) {
-            0
-        } + try {
-            parseFrame(frames[2])
-        } catch (e: Exception) {
-            0
-        }
+        return gameRepresentation.split("|").map { parseFrame(it) }.sum()
     }
 
     private fun parseFrame(representation: String): Int {
@@ -21,8 +12,12 @@ class Game(private val gameRepresentation: String) {
         if (isSpare(representation)) {
             return 10
         }
-        return scoreOfASingleThrow(representation[0]) +
-                scoreOfASingleThrow(representation[1])
+        return try {
+            scoreOfASingleThrow(representation[0]) +
+                    scoreOfASingleThrow(representation[1])
+        } catch (e: Exception) {
+            0
+        }
     }
 
     private fun isSpare(representation: String): Boolean {
