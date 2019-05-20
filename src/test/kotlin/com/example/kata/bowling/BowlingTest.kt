@@ -39,5 +39,13 @@ class BowlingTest {
         assertThat(calculateScore(gameRepresentation), Is.`is`(expected))
     }
 
+    @ParameterizedTest(name = "Scoring multiple frames (with interaction): case {2} - \"{0}\" is scored at {1}")
+    @CsvSource(
+        "'-/|-1', 11, 'There is no bonus to add, from the spare'"
+    )
+    fun `scoring multiple frames with interaction`(gameRepresentation: String, expected: Int) {
+        assertThat(calculateScore(gameRepresentation), Is.`is`(expected))
+    }
+
     private fun calculateScore(gameRepresentation: String) = Game(gameRepresentation).score()
 }
