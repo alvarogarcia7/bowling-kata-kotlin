@@ -12,15 +12,11 @@ class BowlingTest {
 
     @ParameterizedTest(name = "No Pins are knocked down: {0}")
     @CsvSource(
-        "--|--|--|--|--|--|--|--|--|--||"
+        "--|--|--|--|--|--|--|--|--|--||",
+        "--"
     )
-    fun `total score when no pins are knocked down`(gameRepresentation: String) {
+    fun `no pins are knocked down`(gameRepresentation: String) {
         assertThat(calculateScore(gameRepresentation), Is.`is`(0))
-    }
-
-    @Test
-    fun `total score for one frame when no pins are knocked down`() {
-        assertThat(0, `is`(calculateScore("--")))
     }
 
     @Test
