@@ -30,7 +30,7 @@ class BowlingTest {
     }
 
 
-    @ParameterizedTest(name = "Scoring multiple frames: \"{0}\" is scored at {1}")
+    @ParameterizedTest(name = "Scoring multiple frames (without interaction): \"{0}\" is scored at {1}")
     @CsvSource(
         "'-1|-1', 2",
         "'-1|-1|-1', 3"
