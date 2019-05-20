@@ -14,12 +14,12 @@ class BowlingTest {
     @CsvSource(
         "--|--|--|--|--|--|--|--|--|--||"
     )
-    fun total_score_when_no_pins_are_knocked_down(gameRepresentation: String) {
+    fun `total score when no pins are knocked down`(gameRepresentation: String) {
         assertThat(calculateScore(gameRepresentation), Is.`is`(0))
     }
 
     @Test
-    fun total_score_for_one_frame_when_no_pins_are_knocked_down() {
+    fun `total score for one frame when no pins are knocked down`() {
         assertThat(0, `is`(calculateScore("--")))
     }
 
